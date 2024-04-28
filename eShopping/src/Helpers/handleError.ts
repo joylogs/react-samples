@@ -1,0 +1,16 @@
+import axios from "axios"
+import _get from 'lodash/get'
+
+export const handleError = (error: any) => {
+    let message
+    let code
+
+    if (axios.isAxiosError(error) && error.response) {
+        const detailError = _get(error, 'response.data.data.detail', '')
+        code = _get(error, 'response.status', null)
+        message = detailError || error.response.data.message || error.response.statusText
+    } else {
+        message = String(error)
+    }
+    return { message, code }
+}

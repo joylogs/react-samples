@@ -1,6 +1,8 @@
+import handleError from '../Helpers/handleError'
 import { useState } from "react"
 import { END_POINT } from "../Services/constant"
 import { axiosInstance } from '../Services/api'
+import { useQuery } from 'react-query'
 
 const request = async () => {
     const {data} = await axiosInstance.request({
