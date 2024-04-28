@@ -1,7 +1,7 @@
 import axios from "axios"
 import _get from 'lodash/get'
 
-export const handleError = (error: any) => {
+const handleError = (error: any) => {
     let message
     let code
 
@@ -14,3 +14,5 @@ export const handleError = (error: any) => {
     }
     return { message, code }
 }
+
+export default handleError

@@ -14,4 +14,4 @@ const LoadingView = (props: Props) => {
     )
 }
 
-export default LoadingView;
+export default LoadingView
