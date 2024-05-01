@@ -7,6 +7,8 @@
 
 import React from 'react';
 import type {PropsWithChildren} from 'react';
+
+
 import {
   SafeAreaView,
   ScrollView,
@@ -16,6 +18,7 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import { Provider } from 'react-native-paper';
 
 import {
   Colors,
@@ -29,7 +32,12 @@ type SectionProps = PropsWithChildren<{
   title: string;
 }>;
 
+const App = () => (
+  <Provider store={store}>
 
+
+  </Provider>
+)
 
 // function Section({children, title}: SectionProps): React.JSX.Element {
 //   const isDarkMode = useColorScheme() === 'dark';
