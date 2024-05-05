@@ -18,7 +18,8 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import { Provider } from 'react-native-paper';
+import { Provider } from 'react-redux';
+import { PaperProvider } from 'react-native-paper';
 
 import {
   Colors,
@@ -27,15 +28,24 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import { PersistGate } from 'redux-persist/integration/react'
+import ApplicationNavigator from './src/Navigators/Application';
+import { persistor, store } from './src/Stores';
 
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
 
 const App = () => (
-  <Provider store={store}>
-
-
+  <Provider store = {store}>
+    <PaperProvider>
+      <PersistGate persistor={persistor} loading={null}>
+        <View >
+          <StatusBar barStyle={'dark-content'} backgroundColor={Colors.white}/>
+          <ApplicationNavigator/>
+        </View>
+      </PersistGate>
+    </PaperProvider>
   </Provider>
 )
 

@@ -15,4 +15,5 @@ const ApplicationNavigator = () => {
     )
 }
 
+export default ApplicationNavigator
 
