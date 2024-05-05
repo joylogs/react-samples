@@ -3,10 +3,12 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { ProductList } from "../Containers/Search/Components/ProductList"
 import { size } from "lodash"
 import Profile from "../Containers/Profile/Profile"
+// import {  } from 'react-native-vector-icons'
+import Icon from "react-native-ionicons"
 
 const Tab = createBottomTabNavigator()
 
-const MainBottomNavigation = () => {
+export const MainBottomNavigation = () => {
     return (
         <Tab.Navigator
         initialRouteName="Home"
@@ -17,7 +19,7 @@ const MainBottomNavigation = () => {
             component={ProductList}
             options={{ 
                 tabBarIcon: ({ color, size }) => (
-                <Ionicons name='home' color = {color} size = {size}/>
+                <Icon name='home' color = {color} size = {size}/>
             ), 
             headerShown: false 
             }}
@@ -27,7 +29,7 @@ const MainBottomNavigation = () => {
             name="Profile"
             component={Profile}
             options={{ 
-                tabBarIcon: ({ color, size }) => <Ionicons name ='Search' color = {color} size = {size}/>, 
+                tabBarIcon: ({ color, size }) => <Icon name ='Search' color = {color} size = {size}/>, 
             headerShown: false
         }}
         />
