@@ -12,7 +12,9 @@ export const MainBottomNavigation = () => {
     return (
         <Tab.Navigator
         initialRouteName="Home"
-        screenOptions={{ tabBarShowLabel: true }}
+        screenOptions={{ 
+            tabBarShowLabel: true,
+        }}
         >
             <Tab.Screen
             name="Home"
@@ -21,7 +23,7 @@ export const MainBottomNavigation = () => {
                 tabBarIcon: ({ color, size }) => (
                 <Icon name='home' color = {color} size = {size}/>
             ), 
-            headerShown: false 
+            headerShown: false,
             }}
             />
 
@@ -30,7 +32,7 @@ export const MainBottomNavigation = () => {
             component={Profile}
             options={{ 
                 tabBarIcon: ({ color, size }) => <Icon name ='Search' color = {color} size = {size}/>, 
-            headerShown: false
+            headerShown: false,
         }}
         />
             

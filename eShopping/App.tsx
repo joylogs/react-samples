@@ -30,13 +30,14 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import { PersistGate } from 'redux-persist/integration/react'
 import ApplicationNavigator from './src/Navigators/Application';
-import { persistor, store } from './src/Stores';
+import { persistor, store } from '.';
 
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
 
 const App = () => (
+  <>
   <Provider store = {store}>
     <PaperProvider>
       <PersistGate persistor={persistor} loading={null}>
@@ -47,6 +48,10 @@ const App = () => (
       </PersistGate>
     </PaperProvider>
   </Provider>
+  </>
+    // <Text>
+    //     Hi, Hello
+    //   </Text>
 )
 
 // function Section({children, title}: SectionProps): React.JSX.Element {
@@ -135,4 +140,4 @@ const App = () => (
 //   },
 // });
 
-// export default App;
+export default App;
