@@ -51,7 +51,7 @@ const App = () => (
         <PersistGate persistor={persistor} loading={null}>
           <QueryClientProvider client={queryClient}>
             <View style={styles.container}>
-              {/* {<StatusBar barStyle={'dark-content'} backgroundColor={Colors.white} />} */}
+              <StatusBar barStyle={'dark-content'} backgroundColor={Colors.white} />
               <ApplicationNavigator />
             </View>
           </QueryClientProvider>

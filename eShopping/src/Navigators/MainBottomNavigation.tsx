@@ -1,43 +1,53 @@
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { ProductList } from "../Containers/Search/Components/ProductList"
-import { size } from "lodash"
 import Profile from "../Containers/Profile/Profile"
-// import {  } from 'react-native-vector-icons'
-import Icon from "react-native-ionicons"
-import { View } from "react-native"
-import { Text } from "react-native-paper"
+import Icon from 'react-native-vector-icons/FontAwesome5'
+// import Icon from "react-native-ionicons"
 
 const Tab = createBottomTabNavigator();
 
 export const MainBottomNavigation = () => {
     return (
-
-        // <View>
-        //     <ProductList />
-        // </View>
-
         <Tab.Navigator>
             <Tab.Screen
                 name="Home"
-                component={Profile}
+                component={ProductList}
                 options={{
                     tabBarIcon: ({ color, size }) => (
-                        <Icon name='home' />
+                        <Icon name='home' color={color} size={size} />
                     ),
                     headerShown: false,
                 }}
             />
-
-            {/* <Tab.Screen
+            <Tab.Screen
+                name="Search"
+                component={Profile}
+                options={{
+                    tabBarIcon: ({ color, size }) => (
+                        <Icon name='search' color={color} size={size} />
+                    ),
+                    headerShown: false,
+                }}
+            />
+            <Tab.Screen
+                name="Wishlist"
+                component={Profile}
+                options={{
+                    tabBarIcon: ({ color, size }) => (
+                        <Icon name='heart' color={color} size={size} />
+                    ),
+                    headerShown: false,
+                }}
+            />
+            <Tab.Screen
                 name="Profile"
                 component={Profile}
                 options={{
-                    tabBarIcon: ({ color, size }) => <Icon name='search' />,
+                    tabBarIcon: ({ color, size }) => <Icon name='user' color={color} size={size} />,
                     headerShown: false,
                 }}
-            /> */}
-
+            />
         </Tab.Navigator >
     )
 }
