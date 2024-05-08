@@ -5,37 +5,39 @@ import { size } from "lodash"
 import Profile from "../Containers/Profile/Profile"
 // import {  } from 'react-native-vector-icons'
 import Icon from "react-native-ionicons"
+import { View } from "react-native"
+import { Text } from "react-native-paper"
 
-const Tab = createBottomTabNavigator()
+const Tab = createBottomTabNavigator();
 
 export const MainBottomNavigation = () => {
     return (
-        <Tab.Navigator
-        initialRouteName="Home"
-        screenOptions={{ 
-            tabBarShowLabel: true,
-        }}
-        >
+
+        // <View>
+        //     <ProductList />
+        // </View>
+
+        <Tab.Navigator>
             <Tab.Screen
-            name="Home"
-            component={ProductList}
-            options={{ 
-                tabBarIcon: ({ color, size }) => (
-                <Icon name='home' color = {color} size = {size}/>
-            ), 
-            headerShown: false,
-            }}
+                name="Home"
+                component={Profile}
+                options={{
+                    tabBarIcon: ({ color, size }) => (
+                        <Icon name='home' />
+                    ),
+                    headerShown: false,
+                }}
             />
 
-            <Tab.Screen
-            name="Profile"
-            component={Profile}
-            options={{ 
-                tabBarIcon: ({ color, size }) => <Icon name ='Search' color = {color} size = {size}/>, 
-            headerShown: false,
-        }}
-        />
-            
-        </Tab.Navigator>
+            {/* <Tab.Screen
+                name="Profile"
+                component={Profile}
+                options={{
+                    tabBarIcon: ({ color, size }) => <Icon name='search' />,
+                    headerShown: false,
+                }}
+            /> */}
+
+        </Tab.Navigator >
     )
 }

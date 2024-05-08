@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import type {PropsWithChildren} from 'react';
+import type { PropsWithChildren } from 'react';
 
 
 import {
@@ -31,113 +31,40 @@ import {
 import { PersistGate } from 'redux-persist/integration/react'
 import ApplicationNavigator from './src/Navigators/Application';
 import { persistor, store } from '.';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
 
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: { refetchOnWindowFocus: 'always', retry: false },
+    mutations: {}
+  }
+})
+
 const App = () => (
   <>
-  <Provider store = {store}>
-    <PaperProvider>
-      <PersistGate persistor={persistor} loading={null}>
-        <View >
-          <StatusBar barStyle={'dark-content'} backgroundColor={Colors.white}/>
-          <ApplicationNavigator/>
-        </View>
-      </PersistGate>
-    </PaperProvider>
-  </Provider>
+    <Provider store={store}>
+      <PaperProvider>
+        <PersistGate persistor={persistor} loading={null}>
+          <QueryClientProvider client={queryClient}>
+            <View style={styles.container}>
+              {/* {<StatusBar barStyle={'dark-content'} backgroundColor={Colors.white} />} */}
+              <ApplicationNavigator />
+            </View>
+          </QueryClientProvider>
+        </PersistGate>
+      </PaperProvider>
+    </Provider>
   </>
-    // <Text>
-    //     Hi, Hello
-    //   </Text>
 )
-
-// function Section({children, title}: SectionProps): React.JSX.Element {
-//   const isDarkMode = useColorScheme() === 'dark';
-//   return (
-//     <View style={styles.sectionContainer}>
-//       <Text
-//         style={[
-//           styles.sectionTitle,
-//           {
-//             color: isDarkMode ? Colors.white : Colors.black,
-//           },
-//         ]}>
-//         {title}
-//       </Text>
-//       <Text
-//         style={[
-//           styles.sectionDescription,
-//           {
-//             color: isDarkMode ? Colors.light : Colors.dark,
-//           },
-//         ]}>
-//         {children}
-//       </Text>
-//     </View>
-//   );
-// }
-
-// function App(): React.JSX.Element {
-//   const isDarkMode = useColorScheme() === 'dark';
-
-//   const backgroundStyle = {
-//     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-//   };
-
-//   return (
-//     <SafeAreaView style={backgroundStyle}>
-//       <StatusBar
-//         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-//         backgroundColor={backgroundStyle.backgroundColor}
-//       />
-//       <ScrollView
-//         contentInsetAdjustmentBehavior="automatic"
-//         style={backgroundStyle}>
-//         <Header />
-//         <View
-//           style={{
-//             backgroundColor: isDarkMode ? Colors.black : Colors.white,
-//           }}>
-//           <Section title="Step One">
-//             Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-//             screen and then come back to see your edits.
-//           </Section>
-//           <Section title="See Your Changes">
-//             <ReloadInstructions />
-//           </Section>
-//           <Section title="Debug">
-//             <DebugInstructions />
-//           </Section>
-//           <Section title="Learn More">
-//             Read the docs to discover what to do next:
-//           </Section>
-//           <LearnMoreLinks />
-//         </View>
-//       </ScrollView>
-//     </SafeAreaView>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   sectionContainer: {
-//     marginTop: 32,
-//     paddingHorizontal: 24,
-//   },
-//   sectionTitle: {
-//     fontSize: 24,
-//     fontWeight: '600',
-//   },
-//   sectionDescription: {
-//     marginTop: 8,
-//     fontSize: 18,
-//     fontWeight: '400',
-//   },
-//   highlight: {
-//     fontWeight: '700',
-//   },
-// });
-
 export default App;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#EFF4FF',
+  },
+})
