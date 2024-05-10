@@ -7,9 +7,9 @@ import LoadingView from "../../../Components/LoadingView";
 export const ProductList = () => {
 
     const { data: products, isFetching } = useListProducts();
-    const getProductImageURL = useCallback((index: string, size = 100) => {
+    const getProductImageURL = useCallback((productId: string) => {
         const IMAGE_BASE = 'https://cdn.dummyjson.com/product-images'
-        return `${IMAGE_BASE}/${index}/1.jpg`
+        return `${IMAGE_BASE}/${productId}/1.jpg`
     }, [])
 
     return (
@@ -43,7 +43,7 @@ export const ProductList = () => {
                                         <Avatar.Image
                                             {...props}
                                             size={64}
-                                            source={{ uri: getProductImageURL(index.toString()) }}
+                                            source={{ uri: getProductImageURL(product.id.toString()) }}
                                         />
                                     )
                                     }

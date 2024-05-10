@@ -1,10 +1,14 @@
 
 import React from "react"
-import { Text } from "react-native"
+import { Text, View } from "react-native"
 
 
 const Profile = () => {
-    return <Text>ProfilePage</Text>;
+    return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text style={{ textAlignVertical: "center", textAlign: "center", }}>ProfilePage</Text>
+        </View>
+    )
 }
 
 export default Profile;

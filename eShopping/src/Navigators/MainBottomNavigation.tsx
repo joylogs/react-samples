@@ -3,7 +3,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { ProductList } from "../Containers/Search/Components/ProductList"
 import Profile from "../Containers/Profile/Profile"
 import Icon from 'react-native-vector-icons/FontAwesome5'
-// import Icon from "react-native-ionicons"
+import Wishlist from "../Containers/Wishlist/Wishlist";
+import SearchPage from "../Containers/Search/Components/Search";
 
 const Tab = createBottomTabNavigator();
 
@@ -22,7 +23,7 @@ export const MainBottomNavigation = () => {
             />
             <Tab.Screen
                 name="Search"
-                component={Profile}
+                component={SearchPage}
                 options={{
                     tabBarIcon: ({ color, size }) => (
                         <Icon name='search' color={color} size={size} />
@@ -32,7 +33,7 @@ export const MainBottomNavigation = () => {
             />
             <Tab.Screen
                 name="Wishlist"
-                component={Profile}
+                component={Wishlist}
                 options={{
                     tabBarIcon: ({ color, size }) => (
                         <Icon name='heart' color={color} size={size} />
